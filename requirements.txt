@@ -1,5 +1,0 @@
-Flask==1.1.2
-youtube_transcript_api==0.4.2
-requests==2.24.0
-python-dotenv==0.10.3
-FPDF==1.7.2
