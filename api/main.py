@@ -1,6 +1,7 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 from fpdf import FPDF
 import requests
+import os
 
 
 def get_transcript(url):
@@ -13,7 +14,7 @@ def get_transcript(url):
 
 def get_video_title(url):
     video_id = url.split("=")[-1]
-    api_key = "AIzaSyBvh9D6v5ADBidazJISKJ7PW76UyJUIuw4"
+    api_key = os.environ.get("API_KEY")
     url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet&id={video_id}&key={api_key}"
     res = requests.get(url)
     data = res.json()

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Transcript Downloader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        .container {
+            margin-top: 3rem;
+            max-width: 700px;
+        }
+
+        #form-container, #preview-container {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        #preview-container {
+            margin-top: 2rem;
+        }
+
+        #preview-text {
+            border: none;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="form-container">
+            <h3>Enter YouTube URL:</h3>
+
+            <form action="/" method="POST">
+               <div class="form-group">
+                   <input type="text" required class="form-control" id="youtubeURL" name="url">
+                   <input type="submit" class="btn btn-primary mt-2" value="Generate Transcript">
+               </div>
+            </form>
+
+            {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+        </div>
+
+        {% if transcript %}
+        <div id="preview-container">
+            <h3>Transcript Preview:</h3>
+            <textarea id="preview-text" class="form-control" rows="10" readonly>{{ transcript }}</textarea>
+
+            <form action="/download" method="post">
+                <input type="submit" class="btn btn-primary mt-2" value="Download Transcript">
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
