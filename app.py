@@ -3,7 +3,7 @@ from main import get_transcript, get_video_title, create_pdf
 import os
 import re
 
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__)
 
 transcript = None
 file_name = None
